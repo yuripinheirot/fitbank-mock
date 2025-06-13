@@ -30,7 +30,7 @@ services:
     env_file:
       - ./.env.local
     ports:
-      - 4433:4433
+      - 4444:4444
       - 9222:9222
-    command: ash -c "pnpm install && pnpm run dev"
+    command: ash -c "npm run start"
     restart: always

@@ -9,7 +9,6 @@
       "request": "attach",
       "name": "Docker: Attach to Node",
       "port": 9222,
-      "remoteRoot": "/home/node/app",
       "restart": true
     }
   ]

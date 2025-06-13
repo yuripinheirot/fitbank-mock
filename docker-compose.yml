@@ -28,9 +28,9 @@ services:
     <<: *base
     hostname: app
     env_file:
-      - ./.env.local
+      - ./.env
     ports:
       - 4444:4444
       - 9222:9222
-    command: ash -c "npm run start"
+    command: ash -c "npm start"
     restart: always

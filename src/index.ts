@@ -1,5 +1,7 @@
+/* eslint-disable import/no-named-as-default-member */
 import express, { Request, Response, Router } from 'express'
 import axios from 'axios'
+import dotenv from 'dotenv'
 
 import {
   ErrorResponse,
@@ -16,11 +18,13 @@ import {
   WebhookMethod,
 } from './types'
 
+dotenv.config()
+
 const envs = {
-  PORT: 4444,
-  STRAPI_API_TOKEN:
-    '5376f793ec52c2d1224363d754f0f242e06711238948e1306c98ed6d27637f7556a66af8903361a9a40d14f76da0d0a733e52575f306af1e60ea3e7728ce78c3988dfb1a2a97909b3cbb0b3e92c807d115ed631e2648f75997b6670361b26fc38e72250fb3c9dfd958271ce17b06115575b262ae22dbe985254aa29ef218c901',
-  STRAPI_URL: 'http://localhost:1337/api/fitbank/webhook',
+  PORT: process.env.PORT || 4444,
+  STRAPI_API_TOKEN: process.env.STRAPI_API_TOKEN || 'abc123',
+  STRAPI_URL:
+    process.env.STRAPI_URL || 'http://localhost:1337/api/fitbank/webhook',
 }
 
 const app = express()

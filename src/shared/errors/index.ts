@@ -1,6 +1,0 @@
-export * from './bad-request.error'
-export * from './base-http.error'
-export * from './forbidden.error'
-export * from './internal-server-error.error'
-export * from './not-found.error'
-export * from './unauthorized.error'

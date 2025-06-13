@@ -1,0 +1,36 @@
+version: '3.9'
+
+volumes:
+  app-vol:
+  node-modules-vol:
+  mongodb-vol:
+
+networks:
+  node-template-network:
+    name: node-template-network
+
+services:
+  base: &base
+    hostname: base
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    working_dir: /home/node/app
+    volumes:
+      - .:/home/node/app
+      - ./dist:/home/node/app/dist
+      - node-modules-vol:/home/node/app/node_modules
+    networks:
+      - node-template-network
+
+  app:
+    <<: *base
+    hostname: app
+    env_file:
+      - ./.env.local
+    ports:
+      - 4433:4433
+      - 9222:9222
+    command: ash -c "pnpm install && pnpm run dev"
+    restart: always

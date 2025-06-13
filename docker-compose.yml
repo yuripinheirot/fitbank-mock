@@ -1,9 +1,7 @@
 version: '3.9'
 
 volumes:
-  app-vol:
   node-modules-vol:
-  mongodb-vol:
 
 networks:
   node-template-network:
@@ -19,7 +17,6 @@ services:
     working_dir: /home/node/app
     volumes:
       - .:/home/node/app
-      - ./dist:/home/node/app/dist
       - node-modules-vol:/home/node/app/node_modules
     networks:
       - node-template-network
@@ -32,5 +29,5 @@ services:
     ports:
       - 4444:4444
       - 9222:9222
-    command: ash -c "npm start"
+    command: npm run dev
     restart: always

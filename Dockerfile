@@ -12,11 +12,9 @@ RUN npm install
 # Copy app source
 COPY . .
 
-# Build app
-RUN npm run build
-
-# Expose port from .env
+# Expose ports
 EXPOSE 4444
+EXPOSE 9222
 
-# Start app
+# Start app in development mode
 CMD ["npm", "start"]
